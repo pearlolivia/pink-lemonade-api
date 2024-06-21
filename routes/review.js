@@ -3,14 +3,10 @@ var { v4: uuidv4 } = require('uuid');
 const Review = require('../models/review');
 var router = express.Router();
 
-// router.get('/', function(req, res, next) {
-//     res.send('API is working properly');
-// });
-
-router.get('/', (req, res) => {
-    Review.find()
+router.get('/get-all', (req, res) => {
+    Review.find({ approved: 1 })
         .then((result) => {
-            res.json(result);
+            res.send(result);
         })
         .catch((err) => {
             console.log(err);
@@ -34,7 +30,7 @@ router.post('/', (req, res) => {
         email,
         eventDate,
         feedback: req.body?.feedback ? feedback: '',
-        id: uuidv4(),
+        // id: uuidv4(),
         rating,
         review,
         reviewer,

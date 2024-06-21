@@ -21,10 +21,6 @@ const reviewSchema = new Schema({
     feedback: {
         type: String,
     },
-    id: {
-        type: String,
-        required: true,
-    },
     rating: {
         type: Number,
         required: true,
